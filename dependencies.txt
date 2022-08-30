@@ -1,0 +1,16 @@
+
+Name:awesome-phonenumber, Version: 3.3.0, License: MIT, URL: https://github.com/grantila/awesome-phonenumber#readme
+Name:moment-timezone, Version: 0.5.37, License: MIT, URL: http://momentjs.com/timezone/
+Name:node-fetch, Version: 3.2.10, License: MIT, URL: https://github.com/node-fetch/node-fetch
+Name:csv-parser, Version: 3.0.0, License: MIT, URL: https://github.com/mafintosh/csv-parser
+Name:react-router-dom, Version: 6.3.0, License: MIT, URL: https://github.com/remix-run/react-router#readme
+Name:jsonwebtoken, Version: 8.5.1, License: MIT, URL: https://github.com/auth0/node-jsonwebtoken#readme
+Name:lodash, Version: 4.17.21, License: MIT, URL: https://lodash.com/
+Name:@twilio/runtime-handler, Version: 1.2.4, License: MIT, URL: https://github.com/twilio-labs/serverless-toolkit/tree/main/packages/runtime-handler#readme
+Name:axios, Version: 0.27.2, License: MIT, URL: https://axios-http.com
+Name:moment, Version: 2.29.4, License: MIT, URL: https://momentjs.com
+Name:@twilio-labs/serverless-api, Version: 5.4.3, License: MIT, URL: https://github.com/twilio-labs/serverless-toolkit
+Name:twilio-flex-token-validator, Version: 1.5.6, License: MIT, URL: https://github.com/twilio/twilio-flex-token-validator#readme
+Name:jsforce, Version: 1.11.0, License: MIT, URL: http://github.com/jsforce/jsforce
+Name:twilio, Version: 3.81.0, License: MIT, URL: https://github.com/twilio/twilio-node#readme
+Name:configure-env, Version: 1.0.0, License: MIT, URL: undefined

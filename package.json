@@ -1,0 +1,23 @@
+{
+  "name": "oss-dependency-generator",
+  "version": "1.0.0",
+  "description": "Generates dependencies information per Twilio's Open Source Software Release Approval requirements.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssepactwilio/oss-dependency-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssepactwilio/oss-dependency-generator/issues"
+  },
+  "homepage": "https://github.com/ssepactwilio/oss-dependency-generator#readme",
+  "dependencies": {
+    "dotenv": "16.0.2",
+    "npm-api": "1.0.1"
+  }
+}
