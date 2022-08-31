@@ -1,54 +1,23 @@
 /**
  * This script generates an Open Source Dependencies file, as required by Twilio's Open Source Software Release Approval.
  */
-
+const { traverseFileTree } = require("./util");
+const { assert } = require("console");
 const fs = require("fs");
-require('dotenv').config()
-const NpmApi = require("npm-api");
-const npm = new NpmApi();
+const { emitWarning } = require("process");
+const { unlink } = fs.promises;
+const { PROJECT_ROOT, IGNORE_DIRS, OUTPUT_FILE_PATH } = process.env;
 
-//TODO: Fill these out ===============
-  const PACKAGE_JSON_FILE_PATH = process.env.PACKAGE_JSON_FILE_PATH
-  const OUTPUT_FILE_PATH= process.env.OUTPUT_FILE_PATH
-//=====================================
+assert(PROJECT_ROOT, "PROJECT_ROOT was not defined in .env!");
+assert(OUTPUT_FILE_PATH, "OUTPUT_FILE_PATH was not defined in .env!");
 
-fs.readFile(PACKAGE_JSON_FILE_PATH, "utf8", (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
+if (!IGNORE_DIRS)
+  emitWarning(
+    "IGNORE_DIRS was undefined, this means node_modules and other potentially unwanted package.json files may be included in your dependency list."
+  );
 
-  const packages = JSON.parse(data);
-
-  const deps = Object.keys(packages.dependencies);
-
-  const results = [];
-  const promises = deps
-    .reduce((arr, curr) => {
-      return arr.concat(npm.repo(curr));
-    }, [])
-    .map((repo) =>
-      repo.package().then(({ name, version, license, homepage }) => {
-        results.push({
-          name,
-          version,
-          license,
-          url: homepage,
-        });
-      })
-    );
-  Promise.all(promises).then(() => {
-    const beautifiedText = results.reduce(
-      (text, { name, version, license, url }) =>
-        `${text}\nName:${name}, Version: ${version}, License: ${license}, URL: ${url}`,
-      ""
-    );
-    fs.writeFile(OUTPUT_FILE_PATH, beautifiedText, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log("Successfully wrote file.");
-    });
-  });
-});
+new Promise((resolve, reject) =>
+  fs.existsSync(OUTPUT_FILE_PATH)
+    ? resolve(unlink(OUTPUT_FILE_PATH))
+    : resolve()
+).then(() => traverseFileTree(PROJECT_ROOT));
